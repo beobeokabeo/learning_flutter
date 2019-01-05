@@ -11,38 +11,29 @@ class Potatoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('[Potatoes] build');
-    return Column(
-      children: potatoesList
-          .map(
-            (element) => Card(
-                  child: Column(
-                    children: <Widget>[
-                      new Card(
-                        child: new Container(
-                          decoration: new BoxDecoration(
-                            image: new DecorationImage(
-                              fit: BoxFit.cover,
-                              colorFilter: new ColorFilter.mode(
-                                  Colors.white.withOpacity(1),
-                                  BlendMode.dstATop),
-                              image: new NetworkImage(
-                                'http://www.allwhitebackground.com/images/2/2582-190x190.jpg',
-                              ),
-                            ),
+    return Center(
+      child: Container(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: potatoesList
+              .map(
+                (element) => Card(
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/potatoe.jpg',
+                            fit: BoxFit.fitWidth,
+                            colorBlendMode: BlendMode.dstATop,
                           ),
-                        ),
+                          Text(element)
+                        ],
                       ),
-                      Image.asset(
-                        'assets/potatoe.jpg',
-                        fit: BoxFit.fitWidth,
-                        colorBlendMode: BlendMode.dstATop,
-                      ),
-                      Text(element)
-                    ],
-                  ),
-                ),
-          )
-          .toList(),
+                    ),
+              )
+              .toList(),
+        ),
+      ),
     );
   }
 }

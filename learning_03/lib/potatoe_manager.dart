@@ -18,7 +18,7 @@ class PotatoeManager extends StatefulWidget {
 }
 
 class _PotatoeManagerState extends State<PotatoeManager> {
-  List<String> _potatoesList = [];
+  final List<String> _potatoesList = [];
 
   @override
   void initState() {
