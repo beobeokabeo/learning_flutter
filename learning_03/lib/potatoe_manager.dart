@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './potatoes.dart';
+import './potatoe_control.dart';
 
 class PotatoeManager extends StatefulWidget {
   final String startingPotatoe;
@@ -33,24 +34,21 @@ class _PotatoeManagerState extends State<PotatoeManager> {
     super.didUpdateWidget(oldWidget);
   }
 
+  void _addPotatoe(String potatoe) {
+    setState(() {
+      print('[Potatoe Manager] setState');
+      _potatoesList.add('potatoe');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     print('[Potatoe Manager] build');
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.all(5.0),
-          child: RaisedButton(
-            color: Theme.of(context).primaryColor,
-            child: Text("Add stuff"),
-            splashColor: Colors.green,
-            onPressed: () {
-              setState(() {
-                print('[Potatoe Manager] setState');
-                _potatoesList.add('potatoe');
-              });
-            },
-          ),
+          margin: EdgeInsets.all(10.0),
+          child: PotatoeControl(_addPotatoe),
         ),
         Potatoes(_potatoesList),
       ],

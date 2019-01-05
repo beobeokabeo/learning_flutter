@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Column(children: [
             Container(
-              child: Text("PotatoEs"),
+              child: Text("learning_03"),
             )
           ]),
            //backgroundColor: Colors.black,
