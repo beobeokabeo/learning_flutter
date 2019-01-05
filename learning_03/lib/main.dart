@@ -8,17 +8,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+          accentColor: Colors.deepPurple,
+          brightness: Brightness.light),
       home: Scaffold(
         appBar: AppBar(
-            title: Column(children: [
-              Container(
-                child: Text("Title here"),
-                color: Colors.green,
-              )
-            ]),
-            backgroundColor: Colors.black),
+          title: Column(children: [
+            Container(
+              child: Text("PotatoEs"),
+            )
+          ]),
+           //backgroundColor: Colors.black,
+        ),
         body: PotatoeManager(),
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.transparent,
       ),
     );
   }
