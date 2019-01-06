@@ -1,4 +1,4 @@
-import 'dart:async'; // stream subscriptions
+// import 'dart:async'; // stream subscriptions
 
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
@@ -47,12 +47,12 @@ class _HomePageState extends State<HomePage> {
 
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
 
-  StreamSubscription _onDestroy;
-  StreamSubscription<String> _onUrlChanged;
-  StreamSubscription<WebViewStateChanged> _onStateChanged;
-  StreamSubscription<WebViewHttpError> _onHttpError;
-  StreamSubscription<double> _onScrollYChanged;
-  StreamSubscription<double> _onScrollXChanged;
+  // StreamSubscription _onDestroy;
+  // StreamSubscription<String> _onUrlChanged;
+  // StreamSubscription<WebViewStateChanged> _onStateChanged;
+  // StreamSubscription<WebViewHttpError> _onHttpError;
+  // StreamSubscription<double> _onScrollYChanged;
+  // StreamSubscription<double> _onScrollXChanged;
 
   final _urlTextFieldController = new TextEditingController(text: url);
   final _scaffoldStateKey = new GlobalKey<ScaffoldState>();
@@ -70,68 +70,60 @@ class _HomePageState extends State<HomePage> {
       url = _urlTextFieldController.text;
     });
 
-    _onDestroy = flutterWebviewPlugin.onDestroy.listen((_) {
-      if (mounted) {
-        _scaffoldStateKey.currentState.showSnackBar(
-            const SnackBar(content: const Text('Webview Destroyed')));
-      }
-    });
+    // _onDestroy = flutterWebviewPlugin.onDestroy.listen((_) {
+    //   if (mounted) {
+    //     _scaffoldStateKey.currentState.showSnackBar(
+    //         const SnackBar(content: const Text('Webview Destroyed')));
+    //   }
+    // });
 
-    _onUrlChanged = flutterWebviewPlugin.onUrlChanged.listen((String url) {
-      if (mounted) {
-        setState(() {
-          _history.add('url changed: $url');
-        });
-      }
-    });
+    // _onUrlChanged = flutterWebviewPlugin.onUrlChanged.listen((String url) {
+    //   if (mounted) {
+    //     setState(() {
+    //       _history.add('url changed: $url');
+    //     });
+    //   }
+    // });
 
-    _onScrollXChanged =
-        flutterWebviewPlugin.onScrollXChanged.listen((double x) {
-      if (mounted) {
-        setState(() {
-          _history.add("X axis scroll: $x");
-        });
-      }
-    });
+    // _onScrollXChanged =
+    //     flutterWebviewPlugin.onScrollXChanged.listen((double x) {
+    //   if (mounted) {
+    //     setState(() {
+    //       _history.add("X axis scroll: $x");
+    //     });
+    //   }
+    // });
 
-    _onScrollYChanged =
-        flutterWebviewPlugin.onScrollYChanged.listen((double y) {
-      if (mounted) {
-        setState(() {
-          _history.add("Y-axis scroll: $y");
-        });
-      }
-    });
+    // _onScrollYChanged =
+    //     flutterWebviewPlugin.onScrollYChanged.listen((double y) {
+    //   if (mounted) {
+    //     setState(() {
+    //       _history.add("Y-axis scroll: $y");
+    //     });
+    //   }
+    // });
 
-    _onStateChanged =
-        flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-      if (mounted) {
-        setState(() {
-          _history.add('onStateChanged: ${state.type} ${state.url}');
-        });
-      }
-    });
+    // _onStateChanged =
+    //     flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
+    //   if (mounted) {
+    //     setState(() {
+    //       _history.add('onStateChanged: ${state.type} ${state.url}');
+    //     });
+    //   }
+    // });
 
-    _onHttpError =
-        flutterWebviewPlugin.onHttpError.listen((WebViewHttpError error) {
-      if (mounted) {
-        setState(() {
-          _history.add('http error: ${error.code} ${error.url}');
-        });
-      }
-    });
+    // _onHttpError =
+    //     flutterWebviewPlugin.onHttpError.listen((WebViewHttpError error) {
+    //   if (mounted) {
+    //     setState(() {
+    //       _history.add('http error: ${error.code} ${error.url}');
+    //     });
+    //   }
+    // });
   }
 
   @override
   void dispose() {
-    // cancel all listeners
-    _onDestroy.cancel();
-    _onUrlChanged.cancel();
-    _onStateChanged.cancel();
-    _onHttpError.cancel();
-    _onScrollXChanged.cancel();
-    _onScrollYChanged.cancel();
-
     flutterWebviewPlugin.dispose();
     super.dispose();
   }
